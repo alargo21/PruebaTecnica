@@ -63,6 +63,26 @@
   </div>
 </div>
 
+
+<div class="row">
+  <div class="form-group col-md-6">
+    <label>Categoria</label>
+    <select name="categoria" class="form-control">
+      <option selected disabled>Elige una categoria </option>
+      @foreach ($categorias as $categoria)
+      @if ($categoria->name == str_replace(array('["', '"]'), '', $producto->tieneCategoria()));
+      <option value="{{ $categoria->id }}" selected>{{ $categoria->name }}</option>
+      @else
+      <option value="{{ $categoria->id }}">{{ $categoria->name }}</option>
+      @endif
+      
+      @endforeach
+    </select>
+
+  </div>
+
+</div>
+
 <div class="row">
   <div class="form-group col-md-6">
     <button type="submit" class="btn btn-primary">Guardar</button>

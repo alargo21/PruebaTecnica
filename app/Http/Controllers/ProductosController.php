@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Productos;
+use App\Categorias;
 use App\Http\Requests\ProductosFormRequest;
 use App\Http\Requests\ProductosEditFormRequest;
 class ProductosController extends Controller
@@ -26,7 +27,9 @@ class ProductosController extends Controller
     //Mostrar el formulario para añadir un nuevo registro
     public function create()
     {
-        return view('productos.create'); 
+
+        $categorias = Categorias::all();
+        return view('productos.create', ['categorias' => $categorias]); 
        
     }
 
@@ -48,6 +51,8 @@ class ProductosController extends Controller
 
         $producto->save();
 
+        $producto->asignarCategoria($request->get('categoria'));
+
         return redirect('productos');
     }
 
@@ -61,7 +66,8 @@ class ProductosController extends Controller
     public function edit($id)
     {
         $producto = Productos::findOrFail($id);
-        return view('productos.edit', ['producto'=> $producto]);
+        $categorias = Categorias::all();
+        return view('productos.edit', ['producto'=> $producto, 'categorias' => $categorias]);
 
     }
 
@@ -81,6 +87,13 @@ class ProductosController extends Controller
             $file->move(public_path() . '/imagenes', $file->getClientOriginalName());
             $producto->imagen = $file->getClientOriginalName();
         }
+
+        $categoria = $producto->categorias;
+        if(count($categoria)>0){
+            $categorias_id = $categoria[0]->id;
+        }
+
+        Productos::find($id)->categorias()->updateExistingPivot($categorias_id, ['categorias_id' => $request->get('categoria')]);
 
         $producto->update();
 

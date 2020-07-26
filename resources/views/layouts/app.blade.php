@@ -124,11 +124,10 @@
                             <li class="nav-item has-treeview">
                                 <a href="{{url('categorias')}}"
                                     class="{{ Request::path() === 'categorias' ? 'nav-link active' : 'nav-link' }}">
-                                    <i class="nav-icon fas fa-users"></i>
                                     <p>
-                                        Categorias
-                                          <?php use App\Categorias;  ?>
-                                        <span class="right badge badge-danger"></span>  
+                                        Categorias 
+                                        <?php use App\Categorias; $categorias_count = Categorias::all()->count(); ?>
+                                        <span class="right badge badge-danger">{{ $categorias_count ?? '0' }}</span>
                                     </p>
                                 </a>
                             </li>  
@@ -136,11 +135,10 @@
                             <li class="nav-item has-treeview">
                                 <a href="{{url('productos')}}"
                                     class="{{ Request::path() === 'productos' ? 'nav-link active' : 'nav-link' }}">
-                                    <i class="nav-icon fas fa-users"></i>
                                     <p>
                                         Productos
-                                          <?php use App\Productos;  ?>
-                                        <span class="right badge badge-danger"></span>  
+                                        <?php use App\Productos; $productos_count = Productos::all()->count(); ?>
+                                        <span class="right badge badge-danger">{{ $productos_count ?? '0' }}</span> 
                                     </p>
                                 </a>
                             </li>  

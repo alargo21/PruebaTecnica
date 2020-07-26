@@ -60,6 +60,20 @@
 
       <div class="row">
         <div class="form-group col-md-6">
+          <label>Categoria</label>
+          <select name="categoria" class="form-control">
+            <option selected disabled>Elige una categoria </option>
+            @foreach ($categorias as $categoria)
+            <option value="{{ $categoria->id }}">{{ $categoria->name }}</option>
+            @endforeach
+          </select>
+
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="form-group col-md-6">
           <button type="submit" class="btn btn-primary">Registrar</button>
           <button type="reset" class="btn btn-danger">Cancelar</button>
         </div>

@@ -29,7 +29,8 @@ class ProductosFormRequest extends FormRequest
             'inicio' => 'required|date_format:Y-m-d',
             'fin' => 'required|date_format:Y-m-d|after_or_equal:inicio',
             'precio' => 'required|numeric',
-            'imagen' => 'mimes:jpeg,bmp,png'
+            'imagen' => 'mimes:jpeg,bmp,png',
+            'categoria' => 'required'
         ];
     }
 }
