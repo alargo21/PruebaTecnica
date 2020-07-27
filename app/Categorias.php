@@ -8,5 +8,9 @@ use App\Productos;
 
 class Categorias extends Model
 {
+    protected $fillable = [
+        'name',
+    ];
+
     protected $guarded = [];
 }
