@@ -1,5 +1,5 @@
     @extends('layouts.app')
-
+{{-- //extendemos de la pagina principal para que nos lo muestre dentro de la plantilla --}}
     @section('content')
 
     <div class="container">
@@ -7,6 +7,7 @@
         <div class="col-sm-6">
           <h2>Editar usuario: {{$user->name}} </h2>
           @if ($errors->any())
+          {{-- //Nos mostrara si tenemos algun error --}}
           <div class="alert alert-danger">
               <ul>
                   @foreach ($errors->all() as $error)
@@ -17,6 +18,7 @@
       @endif
         </div>
       </div>
+      {{-- //creamos un formulario y con el metodo PATCH vamos a actualizar los datos que le pasamos en cada uno de los campos del formulario --}}
     <form action="{{ route('usuarios.update', $user->id) }}" method="POST" enctype="multipart/form-data">
     @method('PATCH')
     @csrf
@@ -47,6 +49,12 @@
     </div>
 
     <div class="row">  
+      <div class="form-group col-md-6">
+        <label>Fecha Nacimiento</label>
+        <input type="text" class="form-control" name="fecha" value="{{ $user->fecha }}" placeholder="YYYY-MM-DD">
+      </div>
+
+
       <div class="form-group col-md-6">
         <label>Imagen</label>
         <input type="file" name="imagen" class="form-control" >

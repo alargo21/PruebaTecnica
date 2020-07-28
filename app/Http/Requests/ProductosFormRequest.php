@@ -21,6 +21,8 @@ class ProductosFormRequest extends FormRequest
      *
      * @return array
      */
+
+     //le pasamos los requisitos de cada campo para poder almacenarlo de forma correcta
     public function rules()
     {
         return [

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-07-2020 a las 13:46:38
+-- Tiempo de generación: 28-07-2020 a las 22:52:00
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.2
 
@@ -62,10 +62,11 @@ CREATE TABLE `categorias_productos` (
 --
 
 INSERT INTO `categorias_productos` (`productos_id`, `categorias_id`, `created_at`, `updated_at`) VALUES
-(1, 1, '2020-07-26 06:50:30', '2020-07-26 06:50:30'),
-(2, 1, '2020-07-26 07:08:21', '2020-07-26 07:08:21'),
+(1, 1, '2020-07-26 06:50:30', '2020-07-28 17:36:55'),
+(2, 1, '2020-07-26 07:08:21', '2020-07-28 17:37:27'),
 (3, 2, '2020-07-26 07:00:24', '2020-07-26 07:00:24'),
-(6, 2, '2020-07-26 08:05:34', '2020-07-26 09:19:50');
+(6, 1, '2020-07-26 08:05:34', '2020-07-28 06:27:43'),
+(7, 1, '2020-07-28 17:38:04', '2020-07-28 17:38:04');
 
 -- --------------------------------------------------------
 
@@ -105,7 +106,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2020_07_24_144323_add_image_users_table', 1),
 (5, '2020_07_25_153741_create_productos_table', 1),
 (6, '2020_07_25_200612_add_image_productos_table', 1),
-(7, '2020_07_26_080150_create_categorias_tables', 1);
+(7, '2020_07_26_080150_create_categorias_tables', 1),
+(8, '2020_07_28_080607_add_date_users_table', 2);
 
 -- --------------------------------------------------------
 
@@ -142,10 +144,11 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `name`, `descripcion`, `inicio`, `fin`, `precio`, `imagen`, `created_at`, `updated_at`) VALUES
-(1, 'Manzana', 'Fruta', '2020-07-26', '2020-07-27', '2.00', '6.jpg', '2020-07-26 06:39:50', '2020-07-26 06:40:08'),
-(2, 'Naranja', 'Fruta', '2020-07-26', '2020-07-27', '5.00', '5.jpg', '2020-07-26 06:58:19', '2020-07-26 06:58:27'),
+(1, 'Manzana', 'Fruta', '2020-07-26', '2020-07-27', '2.30', '6.jpg', '2020-07-26 06:39:50', '2020-07-28 17:36:55'),
+(2, 'Naranja', 'Fruta', '2020-07-28', '2020-07-29', '5.64', '5.jpg', '2020-07-26 06:58:19', '2020-07-28 17:37:27'),
 (3, 'Lechuga', 'Verdura', '2020-07-26', '2020-07-27', '2.00', '7.jpg', '2020-07-26 06:59:34', '2020-07-26 06:59:34'),
-(6, 'Uva', 'Fruta', '2020-07-25', '2020-07-27', '2.00', NULL, '2020-07-26 08:05:34', '2020-07-26 08:05:34');
+(6, 'Uva', 'Uva Roja', '2020-07-25', '2020-07-27', '2.00', '9.jpg', '2020-07-26 08:05:34', '2020-07-28 06:27:44'),
+(7, 'Pera', 'Fruta', '2020-07-28', '2020-07-29', '2.30', NULL, '2020-07-28 17:38:04', '2020-07-28 17:38:04');
 
 -- --------------------------------------------------------
 
@@ -157,6 +160,7 @@ CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fecha` date DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `imagen` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -169,9 +173,10 @@ CREATE TABLE `users` (
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `imagen`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Alejandro Largo', 'prova@prova.com', NULL, '0.jpg', '$2y$10$urLAkBLpC7y.eMiKCueNquRppR4AB/KAEC5uv1GwzKcVYTLrrzABa', NULL, '2020-07-26 06:38:52', '2020-07-26 06:39:15'),
-(2, 'daniel', 'daniel@prova.com', NULL, '03.png', '$2y$10$8ZRpaRqQQiiU/NLHbxDSheCp9/qfqIHthEB2owbpn5KxND5/v/onC', NULL, '2020-07-26 06:52:03', '2020-07-26 06:52:03');
+INSERT INTO `users` (`id`, `name`, `email`, `fecha`, `email_verified_at`, `imagen`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Alejandro Largo', 'prova@prova.com', '1997-05-21', NULL, '0.jpg', '$2y$10$urLAkBLpC7y.eMiKCueNquRppR4AB/KAEC5uv1GwzKcVYTLrrzABa', NULL, '2020-07-26 06:38:52', '2020-07-28 17:30:35'),
+(2, 'daniel', 'daniel@prova.com', '1990-04-30', NULL, '1.jpg', '$2y$10$8ZRpaRqQQiiU/NLHbxDSheCp9/qfqIHthEB2owbpn5KxND5/v/onC', NULL, '2020-07-26 06:52:03', '2020-07-28 17:36:18'),
+(3, 'Estiven', 'estiven@prova.com', '1988-11-28', NULL, '04.png', '$2y$10$h2juE7BKhCi.Cdxx4Fb.HO/eNnUHI9KPBSPAGJCk7fyOthnDlDTne', NULL, '2020-07-28 06:19:53', '2020-07-28 06:24:18');
 
 --
 -- Índices para tablas volcadas
@@ -229,7 +234,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `failed_jobs`
@@ -241,19 +246,19 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas

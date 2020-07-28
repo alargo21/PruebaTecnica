@@ -18,10 +18,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//Rutas para obtener los datos en nuestra api de los productos y categorias
 Route::resource('productos', 'productosControllerApi');
 
 Route::resource('categorias', 'categoriasControllerApi');
 
+//ruta y controlador para obtener el producto especifico segun su fecha 
+
 Route::get('/productos/precioproducto/{inicio}','productosControllerApi@precioProducto');
-
-

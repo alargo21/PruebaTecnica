@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+{{-- //extendemos de la pagina principal para que nos lo muestre dentro de la plantilla --}}
 @section('content')
 <div class="container">   
     <div class="row">
@@ -8,6 +9,7 @@
       @include('categorias.modal')
   </h2>
 
+  {{-- //Creamos una tabla para ver  los campos que tiene las categorias --}}
 <table class="table table-hover">
     <thead>
       <tr>
@@ -23,6 +25,8 @@
         <td>{{$categoria->name}}</td> 
 
         <td>
+
+          {{-- //indicamos el metodo dentro del controlar para poder eliminar un registro  --}}
             <form action="{{route('categorias.destroy', $categoria->id) }}" method="POST">
                   @csrf
                   @method('DELETE')

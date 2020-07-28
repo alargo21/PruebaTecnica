@@ -8,19 +8,20 @@ use App\Categorias;
 
 class categoriasControllerApi extends Controller
 {
+
+    //Mostrar Lista de Registro
     public function index()
     {
-    // Obtenim el llistat de tots els productes
+    // obtener la lista de las categorias
     $categoria = Categorias::all();
     
     $response = [
-    'success' => true,  // Per indicar que Tot ha anat bé
-    'message' => "Llista productes recuperada", // missatge
-    'data' => $categoria, // en data posem la llista de productes
+    'success' => true,  
+    'message' => "Lista de categorias recuperada", 
+    'data' => $categoria, 
     ];
      
-    // convertim l'array associatiu a format JSON i retornem STATUS 200,
-    // és a dir, tot ok!
+    // convertimos el array asociativo a formato JSON y devolvemos STATUS 200
     return response()->json($response, 200);
      
     }

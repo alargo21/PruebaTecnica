@@ -1,5 +1,6 @@
 <button type="button" class="btn btn-danger float-right" data-toggle="modal" data-target="#addCategoria">Crear categoria</button>
   
+  {{-- //recuperamos la URL y con un toekn vamos a almacenar la categoria que pongamos con sus diferentes campos --}}
     {!! Form::open(['url' => 'categorias']) !!}
     {{ Form::token()}}
     <div class="modal fade" id="addCategoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

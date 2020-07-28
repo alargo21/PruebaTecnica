@@ -1,10 +1,11 @@
 @extends('layouts.app')
-
+{{-- //extendemos de la pagina principal para que nos lo muestre dentro de la plantilla --}}
 @section('content')
 
 <div class="container">
   <div class="row">
     <div class="col-sm-4">
+      {{-- //Nos mostrara si tenemos algun error --}}
       <h2>Editar Producto: {{ $producto->name }}</h2>
         @if ($errors->any())
           <div class="alert alert-danger">
@@ -18,6 +19,7 @@
     </div>
 </div>
             
+{{-- //creamos un formulario y con el metodo PATCH vamos a actualizar los datos que le pasamos en cada uno de los campos del formulario --}}
 <form action="{{ route('productos.update', $producto->id) }}" method="POST" enctype="multipart/form-data">
     @method('PATCH')
     @csrf
@@ -63,7 +65,7 @@
   </div>
 </div>
 
-
+{{-- //actualizamos la categoria del producto con un metodo que hemos definido en Productos.php --}}
 <div class="row">
   <div class="form-group col-md-6">
     <label>Categoria</label>

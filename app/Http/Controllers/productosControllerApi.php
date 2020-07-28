@@ -9,27 +9,26 @@ use App\Productos;
 class productosControllerApi extends Controller
 {
 
-
+//Mostrar Lista de Registro
     public function index()
 {
-// Obtenim el llistat de tots els productes
+
 $producto = Productos::all();
 
 $response = [
-'success' => true,  // Per indicar que Tot ha anat bé
-'message' => "Llista productes recuperada", // missatge
-'data' => $producto, // en data posem la llista de productes
+'success' => true,  
+'message' => "Llista productes recuperada", 
+'data' => $producto, 
 ];
- 
-// convertim l'array associatiu a format JSON i retornem STATUS 200,
-// és a dir, tot ok!
+
 return response()->json($response, 200);
  
 }
 
+// le pasamos por parametro la fecha de inicio que tiene el producto
 public function precioProducto($inicio){
 
-    $producto = Productos::where('inicio', '=', $inicio)->get();  // obté una llista de productes amb preu inferior a $preu
+    $producto = Productos::where('inicio', '=', $inicio)->get();  
 
     return response()->json($producto, 200);
  }

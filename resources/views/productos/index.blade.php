@@ -1,10 +1,11 @@
 @extends('layouts.app')
-
+{{-- extendemos de la pagina principal para que nos lo muestre dentro de la plantilla --}}
 @section('content')
 
 <div class="container">   
     <h2>Lista de productos <a href="productos/create"><button type="button" class="btn btn-success float-right">Agregar Producto</button></a></h2>
   
+    {{-- buscar un producto que le pasemos --}}
     <h6>
       @if($search)
         <div class="alert alert-primary" role="alert">
@@ -13,6 +14,7 @@
       </h6>
     @endif
 
+    {{-- creamos una tabla con los campos y dentro de cada campo el la variable de cada campo para que nos muestre la informacion  --}}
     <table class="table table-hover">
         <thead>
           <tr>

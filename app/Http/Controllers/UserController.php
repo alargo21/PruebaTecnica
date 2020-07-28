@@ -39,6 +39,7 @@ class UserController extends Controller
         $usuario->name = request('name');
         $usuario->email = request('email');
         $usuario->password = bcrypt(request('password'));
+        $usuario->fecha = request('fecha');
         if ($request->hasFile('imagen')){
             $file = $request->imagen;
             $file->move(public_path() . '/imagenes', $file->getClientOriginalName());
@@ -72,6 +73,7 @@ class UserController extends Controller
 
         $usuario->name = $request->get('name');
         $usuario->email = $request->get('email');
+        $usuario->fecha = $request->get('fecha');
 
         if ($request->hasFile('imagen')){
             $file = $request->imagen;

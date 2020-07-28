@@ -1,11 +1,13 @@
 @extends('layouts.app')
-
+{{-- //extendemos de la pagina principal para que nos lo muestre dentro de la plantilla --}}
 @section('content')
 
 <div class="container">
     <div class="row">
         <div class="col-sm-4">
           <h2>Agregar Producto</h2>
+
+          {{-- //Nos mostrara si tenemos algun error --}}
       @if ($errors->any())
           <div class="alert alert-danger">
               <ul>
@@ -17,6 +19,8 @@
       @endif
         </div>
     </div>
+
+    {{-- //creamos un formulario y con un token vamos a almacenar los datos que le pasamos en cada uno de los campos del formulario --}}
     <form action="{{ url('/productos') }}" method="POST" enctype="multipart/form-data">
       @csrf
       
@@ -58,6 +62,7 @@
         </div>
       </div>
 
+      
       <div class="row">
         <div class="form-group col-md-6">
           <label>Categoria</label>

@@ -21,11 +21,13 @@ class UserEditFormRequest extends FormRequest
      *
      * @return array
      */
+
+     //le pasamos los requisitos de cada campo para poder almacenarlo de forma correcta
     public function rules()
     {
         return [
             'name' => 'required|max:255',
-            'password' => 'confirmed',
+            'fecha' => 'required',
             'imagen' => 'mimes:jpeg,bmp,png'
         ];
     }

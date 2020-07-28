@@ -12,20 +12,15 @@ class CategoriasController extends Controller
         $this->middleware('auth');
     }
 
-    
+    //Mostrar Lista de Registro
     public function index()
     {
         $categorias = Categorias::all();
         return view('categorias.index', ['categorias'=> $categorias]);
     }
 
- 
-    public function create()
-    {
-        //
-    }
 
-
+    //almacenar los registros recien creados 
     public function store(Request $request)
     {
         $categoria = new Categorias();
@@ -35,19 +30,7 @@ class CategoriasController extends Controller
         return redirect('categorias');
     }
 
-    
-    public function edit($id)
-    {
-        
-    }
-
-
-    public function update(Request $request, $id)
-    {
-
-    }
-
-
+    //elimina un registro especifico
     public function destroy($id)
     {
         $categoria = Categorias::findOrFail($id);
